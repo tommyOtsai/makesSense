@@ -29,7 +29,3 @@ if __name__ == "__main__":
     error_message = sys.stdin.read()
     processed_message = process_error_message(error_message)
     print(processed_message)
-
-if __name__ == "__main__":
-    main()
-
