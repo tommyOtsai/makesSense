@@ -1,7 +1,7 @@
 #!/bin/bash
 INSTALL_DIR=/usr/local/bin
 
-REPO_URL="https://github.com/tommyOtsai/makesSense.git"
+REPO_URL="https://raw.githubusercontent.com/tommyOtsai/makesSense/main/"
 
 
 curl -fsSL "$REPO_URL/error_handler.py" -o "$INSTALL_DIR/error_handler.py"
