@@ -19,7 +19,7 @@ completion = client.chat.completions.create(
   ],  
 )
 
-def main():
+def main(error_message):
     # Process the error message here
     # For example, make it more comprehensible
     return error_message  # Return the processed message
