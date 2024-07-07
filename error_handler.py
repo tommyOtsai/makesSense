@@ -19,7 +19,7 @@ completion = client.chat.completions.create(
   ],  
 )
 
-def main(error_message):
+def process_error_message(error_message):
     # Process the error message here
     # For example, make it more comprehensible
     return error_message  # Return the processed message
@@ -27,7 +27,7 @@ def main(error_message):
 if __name__ == "__main__":
     # Read from standard input
     error_message = sys.stdin.read()
-    processed_message = main(error_message)
+    processed_message = process_error_message(error_message)
     print(processed_message)
 
 if __name__ == "__main__":

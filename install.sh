@@ -8,4 +8,5 @@ mv install_dir/error_handler.py "$INSTALL_DIR/error_handler" &&
 chmod 777 "$INSTALL_DIR/error_handler" &&
 mv install_dir/universal_error_handler.sh "$INSTALL_DIR/universal_error_handler" &&
 chmod 777 "$INSTALL_DIR/universal_error_handler" &&
-rm -rf install_dir
+rm -rf install_dir &&
+cp ~/.zshrc ~/.zshrc.orig &&
