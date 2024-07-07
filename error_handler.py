@@ -28,4 +28,5 @@ if __name__ == "__main__":
     # Read from standard input
     error_message = sys.stdin.read()
     processed_message = process_error_message(error_message)
+    print("hi")
     print(processed_message)
