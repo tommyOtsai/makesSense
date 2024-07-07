@@ -4,6 +4,7 @@ from openai import OpenAI
 import dotenv
 import sys
 import re
+from prompt import CODE
 
 
 
@@ -17,11 +18,11 @@ client =  OpenAI(api_key=api_key)
 def process_error_message(error_message):
     # Process the error message here
     # For example, make it more comprehensible
-
+    prompt = CODE.format(error_message=error_message)
     completion = client.chat.completions.create(
       model="gpt-4o",
       messages=[
-        {"role": "user", "content": "Your code threw an error: {error_message}. First, rewrite the error message. Then, explain the error message line by line."},
+        {"role": "user", "content": prompt}
       ],  
     )
 
@@ -32,5 +33,4 @@ if __name__ == "__main__":
     # Read from standard input
     error_message = sys.stdin.read()
     processed_message = process_error_message(error_message)
-    print("hi")
     print(processed_message)
