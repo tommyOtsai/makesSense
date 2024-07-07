@@ -21,14 +21,12 @@ completion = client.chat.completions.create(
   ],  
 )
 
-print(completion.choices[0].message.content)  
-
 def main():
-    for line in sys.stdin:
-        line = line.strip()
-        if line:
-            print(line) 
-
+    exit_code = sys.argv[1]
+    command = sys.argv[2]
+    stderr_output = sys.argv[3]
+    print(f"Error with exit code {exit_code} occurred in command: {command}")
+    print("Error output:", stderr_output)
 
 if __name__ == "__main__":
     main()
