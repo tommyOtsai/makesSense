@@ -1,19 +1,26 @@
 #!/bin/bash
+INSTALL_DIR=/usr/local/bin
 
-# Copy the Python script to a suitable directory
-cp error_handler.py /usr/local/bin/error_handler.py
+REPO_URL="https://github.com/tommyOtsai/makesSense.git"
 
-# Make sure it's executable
-chmod +x /usr/local/bin/error_handler.py
 
-# Copy the wrapper script
-cp universal_error_handler /usr/local/bin/universal_error_handler
-chmod +x /usr/local/bin/universal_error_handler
+curl -fsSL "$REPO_URL/error_handler.py" -o "$INSTALL_DIR/error_handler.py"
+if [ -f "$INSTALL_DIR/error_handler.py" ]; then
+    chmod +x "$INSTALL_DIR/error_handler.py"
+else
+    echo "Failed to download error_handler.py"
+    exit 1
+fi
 
-# Update .bashrc to use the wrapper for command 'python'
-echo 'alias python="universal_error_handler python"' >> ~/.bashrc
+# Download the universal error handler script
+curl -fsSL "$REPO_URL/universal_error_handler" -o "$INSTALL_DIR/universal_error_handler"
+if [ -f "$INSTALL_DIR/universal_error_handler" ]; then
+    chmod +x "$INSTALL_DIR/universal_error_handler"
+else
+    echo "Failed to download universal_error_handler"
+    exit 1
+fi
 
-# Optional: add similar aliases for other frequently used commands
-# echo 'alias node="universal_error_handler node"' >> ~/.bashrc
+echo "alias python='universal_error_handler python'" >> ~/.bashrc
 
 echo "Installation complete. Please restart your terminal or source your .bashrc file."
