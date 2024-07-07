@@ -4,8 +4,6 @@ from openai import OpenAI
 import dotenv
 import sys
 import re
-#!/bin/bash
-# Usage: ./wrapper.sh your_command_here
 
 
 
@@ -22,11 +20,15 @@ completion = client.chat.completions.create(
 )
 
 def main():
-    exit_code = sys.argv[1]
-    command = sys.argv[2]
-    stderr_output = sys.argv[3]
-    print(f"Error with exit code {exit_code} occurred in command: {command}")
-    print("Error output:", stderr_output)
+    # Process the error message here
+    # For example, make it more comprehensible
+    return error_message  # Return the processed message
+
+if __name__ == "__main__":
+    # Read from standard input
+    error_message = sys.stdin.read()
+    processed_message = main(error_message)
+    print(processed_message)
 
 if __name__ == "__main__":
     main()
