@@ -12,17 +12,21 @@ api_key = dotenv.get_key('.env', 'OPEN_AI_KEY')
 client =  OpenAI(api_key=api_key)
 
 
-completion = client.chat.completions.create(
-  model="gpt-4o",
-  messages=[
-    {"role": "user", "content": "Say this is a test"},
-  ],  
-)
+
 
 def process_error_message(error_message):
     # Process the error message here
     # For example, make it more comprehensible
-    return error_message  # Return the processed message
+
+    completion = client.chat.completions.create(
+      model="gpt-4o",
+      messages=[
+        {"role": "user", "content": "Your code threw an error: {error_message}. First, rewrite the error message. Then, explain the error message line by line."},
+      ],  
+    )
+
+    error = completion.choices[0].message.content
+    return error  # Return the processed message
 
 if __name__ == "__main__":
     # Read from standard input
